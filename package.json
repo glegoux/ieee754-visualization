@@ -1,0 +1,19 @@
+{
+  "name": "ieee754-visualization",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "node-static": "~0.7.0",
+    "webmake": "~0.3.20",
+    "uglify-js": "~2.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js",
+    "build": "mkdir -p js && ./node_modules/webmake/bin/webmake src/bits.js js/all.debug.js && node_modules/uglify-js/bin/uglifyjs js/all.debug.js -m -o js/all.js"
+  },
+  "repository": "https://github.com/bartaz/ieee754-visualization",
+  "author": "Bartek Szopka",
+  "license": "MIT"
+}
