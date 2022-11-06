@@ -26,9 +26,7 @@
             <div class="bits">
                 <span class="bit sign"></span>
             </div>
-
             <div class="math" >
-
                 <span class="mrow">
                     <span class="mi">s</span>
                     <span class="mo">=</span>
@@ -42,8 +40,8 @@
                     <span class="mn sign-bit-0" data-ieee754-value="signHtml">0</span>
                 </span>
             </div>
-
         </div>
+        
         <div class="bits-wrapper exponent-wrapper">
             <em class="bits-wrapper-title">exponent</em>
             <div class="bits">
@@ -56,9 +54,7 @@
                 <span class="bit exponent"></span>
                 <span class="bit exponent"></span>
             </div>
-
             <div class="math" >
-
                 <span class="mrow">
                     <span class="mi">e</span>
                     <span class="mo">=</span>
@@ -92,6 +88,7 @@
 
             </div>
         </div>
+        
         <div class="bits-wrapper significand-wrapper">
             <em class="bits-wrapper-title">significand</em>
             <div class="bits">
@@ -126,21 +123,17 @@
                 <label for="point-slider" id="point-slider-label"></label>
                 <input id="point-slider" class="point-slider" type="range" min="0" max="2047" step="1" />
             </div>
-
             <div class="math" >
                 <span class="mrow">
                     <span class="mi">n</span>
                     <span class="mo">=</span>
                     <span data-ieee754-value="significandPowers"></span>
                 </span>
-
                 <span class="mrow indented">
                     <span class="mi">n</span>
                     <span class="mo">=</span>
                     <span data-ieee754-value="significandPowersFractions"></span>
                 </span>
-
-
                 <span class="mrow indented">
                     <span class="mi">n</span>
                     <span class="mo">=</span>
@@ -170,10 +163,13 @@
   const urlParams = new URLSearchParams(queryString);
   const value = urlParams.get('q');
   const number = value !== null ? value : Math.random().toString().substr(0, 9);
-  const element = document.getElementById('number-input');
-  element.value = number;
-  const event = new Event('change');
-  element.dispatchEvent(event);
+  const elementNumberInput = document.getElementById('number-input');
+  elementNumberInput.value = number;
+  elementNumberInput.dispatchEvent(new Event('change'));
+  if (urlParams.get('details') === 'true') {
+    const elementToggleDetails = document.getElementsByClassName("toggle-details-button")[0]
+    elementToggleDetails.dispatchEvent(new Event('click'));
+  }  
 </script>
 
 </body>
