@@ -1,0 +1,214 @@
+/**
+ * Binary switcher
+ */
+
+.bit {
+    font-family: monospace;
+    font-size: 20px;
+
+    display: block;
+    float: left;
+    width: 15px;
+    height: 50px;
+
+    text-align: center;
+    line-height: 50px;
+
+    background-image: linear-gradient(transparent, transparent 0px, black 0px, black 2px, transparent 2px, transparent);
+
+    -webkit-transition: background-position 200ms ease-in-out, background-color 200ms;
+    transition: background-position 200ms ease-in-out, background-color 200ms;
+
+    position: relative;
+    overflow: hidden;
+
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select:none;
+    user-select: none;
+}
+
+.hidden {
+    cursor: default;
+}
+.zero {
+    background-color: rgba(100,100,100,0.2);
+    background-position: 0 48px;
+}
+
+.one {
+    background-color: rgba(100,100,100,.6);
+    background-position: 0px 0px;
+}
+
+.zero.sign {
+    background-color: rgba(0,255,255,0.2);
+}
+
+.one.sign {
+    background-color: rgba(0,255,255,0.6);
+}
+
+.zero.exponent {
+    background-color: rgba(0,255,0,.2);
+}
+
+.one.exponent {
+    background-color: rgba(0,255,0,.6);
+}
+
+.zero.significand {
+    background-color: rgba(255,0,0,.2);
+}
+
+.one.significand {
+    background-color: rgba(255,0,0,.6);
+}
+
+.zero::after,
+.one::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: "";
+    top: 0;
+    left: 0;
+
+    background-image: linear-gradient(90deg, transparent, transparent 0px, black 0px, black 2px, transparent 2px, transparent);
+    background-repeat: no-repeat;
+
+    -webkit-transition: -webkit-transform 200ms ease-in-out;
+    transition: transform 200ms ease-in-out;
+}
+
+.zero::after {
+    -webkit-transform: translateY(48px);
+    transform: translateY(48px);
+}
+
+.one::after {
+    -webkit-transform: translateY(-48px);
+    transform: translateY(-48px);
+}
+
+.one + .zero:not(.prev-zero)::after,
+.prev-one.zero::after {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.zero + .one::after,
+.prev-zero.one::after {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+}
+
+.zero::before {
+    content: "0";
+    color: rgba(0,0,0,0.5);
+}
+
+.one::before {
+    content: "1";
+}
+
+.visualisation-bits {
+    overflow: hidden;
+    position: relative;
+}
+
+.bits-wrapper {
+    display: block;
+    margin-bottom: 20px;
+    position: absolute;
+}
+
+.significand-wrapper {
+    margin-left: 135px;
+    padding-bottom: 400px;
+    padding-right: 1em;
+}
+
+.bits {
+    margin-top: 0px;
+    height: 50px;
+}
+
+.significand-wrapper .bits {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.exponent-wrapper {
+    margin-left: 15px;
+}
+
+.bit.hidden {
+    margin-left: -15px;
+}
+
+.sign-title {
+    position: absolute;
+    font-size: 0.7em;
+    -webkit-transform-origin: 10px 85%;
+    transform-origin: 10px 85%;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.bits-wrapper-title {
+    margin-bottom: 0.2em;
+    font-size: 0.7em;
+    display: block;
+    text-align: center;
+    border: 1px solid transparent;
+    border-width: 0 0 2px;
+}
+
+.bits-wrapper-title:hover {
+    border-color: #777;
+}
+
+.sign-wrapper .bits-wrapper-title {
+    width: 15px;
+}
+
+.exponent-wrapper .bits-wrapper-title {
+    width: 120px;
+}
+
+.significand-wrapper .bits-wrapper-title,
+.significand-wrapper .math {
+    width: 345px;
+}
+
+.point-slider {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    opacity: 0;
+    pointer-events: none;
+    width: 345px;
+}
+
+label[for=point-slider] {
+    position: absolute;
+    width: 30px;
+    height: 10px;
+    text-align: center;
+    line-height: 20px;
+    top: 55px;
+    left: 0;
+    transition: 200ms left;
+}
+
+label[for=point-slider]::after {
+    content: "";
+    vertical-align: top;
+    background: #000;
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 5px;
+}

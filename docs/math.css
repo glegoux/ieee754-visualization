@@ -1,0 +1,103 @@
+/*
+  deeply inspired by CSS MathML fallback by Lea Verou
+  http://lea.verou.me/2013/03/use-mathml-today-with-css-fallback/
+*/
+
+.math {
+    font-family: 'Cambria Math', Cambria, MathJax_Main,
+                 STIXGeneral, DejaVu Serif, DejaVu Sans,
+                 Times, Lucida Sans Unicode, OpenSymbol,
+                 Standard Symbols L, serif;
+
+    display: block;
+    clear: both;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.math .nowrap {
+    white-space: nowrap;
+}
+
+.math .mrow {
+    display: block;
+    text-indent: -1.5em;
+    margin-left: 1.5em;
+    margin-bottom: 0.1em;
+}
+
+.math .indented > .mi:first-child {
+    visibility: hidden;
+}
+
+.math .mi {
+    font-style: italic;
+}
+
+.math .mo {
+    font-size: 0.75em;
+    text-indent: 0;
+}
+
+.math .msub,
+.math .msup {
+    white-space: nowrap;
+}
+
+.math .msub > :last-child {
+    vertical-align: sub;
+    font-size: 65%;
+}
+
+.math .msup > :last-child {
+    vertical-align: super;
+    font-size: 65%;
+}
+
+.math .mfrac {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+
+    font-size: 0.8em;
+    text-indent: 0;
+}
+
+.math .mfrac > :first-child {
+    display: block;
+    border-bottom: .08em solid;
+    text-align: center;
+}
+
+.math .mfrac > :last-child {
+    display: block;
+    text-align: center;
+}
+
+
+.math .msum {
+    position: relative;
+    display: inline-block;
+    text-indent: 0;
+    font-size: 1.2em;
+}
+
+.math .msum::before {
+    content: attr(data-from);
+    font-size: 0.4em;
+    position: absolute;
+    bottom: -1em;
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.math .msum::after {
+    content: attr(data-to);
+    font-size: 0.4em;
+    position: absolute;
+    top: -0.6em;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}

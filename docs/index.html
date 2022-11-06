@@ -1,1 +1,171 @@
-Test
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:8000/ -->
+<html data-lt-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>IEEE-754 Floating Point representation explained</title>
+
+    <link rel="stylesheet" href="math.css">
+    <link rel="stylesheet" href="bits.css">
+    <link rel="stylesheet" href="dynks.css">
+    <link rel="stylesheet" href="visualization.css">
+</head>
+
+<body>
+
+<div class="number-wrapper math">
+    <input id="number-input" class="number-input" value="1234.5678">
+
+    <button class="toggle-details-button">toggle details</button>
+</div>
+
+<div class="visualization-wrapper">
+    <div class="visualization-bits">
+
+        <div class="bits-wrapper sign-wrapper">
+            <em class="bits-wrapper-title"><span class="sign-title">sign</span>&nbsp;</em>
+            <div class="bits">
+                <span class="bit sign zero prev-zero"></span>
+            </div>
+
+            <div class="math">
+
+                <span class="mrow">
+                    <span class="mi">s</span>
+                    <span class="mo">=</span>
+                    <span class="msup">
+                        <span class="mn">−1</span><span class="mn sign-bit-0" data-ieee754-value="bSign">0</span>
+                    </span>
+                </span>
+                <span class="mrow indented">
+                    <span class="mi">s</span>
+                    <span class="mo">=</span>
+                    <span class="mn sign-bit-0" data-ieee754-value="signHtml">+1</span>
+                </span>
+            </div>
+
+        </div>
+        <div class="bits-wrapper exponent-wrapper">
+            <em class="bits-wrapper-title">exponent</em>
+            <div class="bits">
+                <span class="bit exponent one prev-zero"></span>
+                <span class="bit exponent zero"></span>
+                <span class="bit exponent zero"></span>
+                <span class="bit exponent zero"></span>
+                <span class="bit exponent one"></span>
+                <span class="bit exponent zero"></span>
+                <span class="bit exponent zero"></span>
+                <span class="bit exponent one"></span>
+            </div>
+
+            <div class="math">
+
+                <span class="mrow">
+                    <span class="mi">e</span>
+                    <span class="mo">=</span>
+                    <span data-ieee754-value="exponentPowers"><span class="msup exponent-bit-7"><span class="mn">2</span><span class="mn">7</span></span><span class="mo"> + </span><span class="msup exponent-bit-3"><span class="mn">2</span><span class="mn">3</span></span><span class="mo"> + </span><span class="msup exponent-bit-0"><span class="mn">2</span><span class="mn">0</span></span></span>
+                </span>
+
+                <span class="mrow indented">
+                    <span class="mi">e</span>
+                    <span class="mo">=</span>
+                    <span data-ieee754-value="exponentPowersComputed"><span class="mn exponent-bit-7">128</span><span class="mo"> + </span><span class="mn exponent-bit-3">8</span><span class="mo"> + </span><span class="mn exponent-bit-0">1</span></span>
+                </span>
+
+                <span class="mrow indented">
+                    <span class="mi">e</span>
+                    <span class="mo">=</span>
+                    <span class="mn dynks-enabled" data-ieee754-value="exponent" id="exponent-dynks" data-dynks-min="0" data-dynks-max="128" data-dynks-gap="2">137</span>
+                </span>
+
+                <span class="mrow">
+                    <span class="mi">p</span>
+                    <span class="mo">=</span>
+                    <span class="mi">e</span>
+                    <span class="mo">−</span>
+                    <span class="mn">127</span>
+                </span>
+                <span class="mrow indented">
+                    <span class="mi">p</span>
+                    <span class="mo">=</span>
+                    <span class="mn dynks-enabled" data-ieee754-value="exponentNormalized" id="exponent-normalized-dynks" data-dynks-min="-127" data-dynks-max="1024" data-dynks-gap="2">10</span>
+                </span>
+
+            </div>
+        </div>
+        <div class="bits-wrapper significand-wrapper">
+            <em class="bits-wrapper-title">significand</em>
+            <div class="bits">
+                <span class="bit hidden one prev-zero"></span>
+
+                <span class="bit significand zero prev-one"></span>
+                <span class="bit significand zero"></span>
+                <span class="bit significand one"></span>
+                <span class="bit significand one"></span>
+                <span class="bit significand zero"></span>
+                <span class="bit significand one"></span>
+                <span class="bit significand zero"></span>
+                <span class="bit significand zero"></span>
+                <span class="bit significand one"></span>
+                <span class="bit significand zero"></span>
+
+                <span class="bit significand one"></span>
+                <span class="bit significand zero"></span>
+                <span class="bit significand zero"></span>
+                <span class="bit significand one"></span>
+                <span class="bit significand zero"></span>
+                <span class="bit significand zero"></span>
+                <span class="bit significand zero"></span>
+                <span class="bit significand one"></span>
+                <span class="bit significand zero"></span>
+                <span class="bit significand one"></span>
+
+                <span class="bit significand zero"></span>
+                <span class="bit significand one"></span>
+                <span class="bit significand one"></span>
+
+                <label for="point-slider" id="point-slider-label" style="left: 135px;"></label>
+                <input id="point-slider" class="point-slider" type="range" min="0" max="2047" step="1">
+            </div>
+
+            <div class="math">
+                <span class="mrow">
+                    <span class="mi">n</span>
+                    <span class="mo">=</span>
+                    <span data-ieee754-value="significandPowers"><span class="msup significand-bit-23"><span class="mn">2</span><span class="mn">10</span></span><span class="mo"> + </span><span class="msup significand-bit-20"><span class="mn">2</span><span class="mn">7</span></span><span class="mo"> + </span><span class="msup significand-bit-19"><span class="mn">2</span><span class="mn">6</span></span><span class="mo"> + </span><span class="msup significand-bit-17"><span class="mn">2</span><span class="mn">4</span></span><span class="mo"> + </span><span class="msup significand-bit-14"><span class="mn">2</span><span class="mn">1</span></span><span class="mo"> + </span><span class="msup significand-bit-12"><span class="mn">2</span><span class="mn">-1</span></span><span class="mo"> + </span><span class="msup significand-bit-9"><span class="mn">2</span><span class="mn">-4</span></span><span class="mo"> + </span><span class="msup significand-bit-5"><span class="mn">2</span><span class="mn">-8</span></span><span class="mo"> + </span><span class="msup significand-bit-3"><span class="mn">2</span><span class="mn">-10</span></span><span class="mo"> + </span><span class="msup significand-bit-1"><span class="mn">2</span><span class="mn">-12</span></span><span class="mo"> + </span><span class="msup significand-bit-0"><span class="mn">2</span><span class="mn">-13</span></span></span>
+                </span>
+
+                <span class="mrow indented">
+                    <span class="mi">n</span>
+                    <span class="mo">=</span>
+                    <span data-ieee754-value="significandPowersFractions"><span class="msup significand-bit-23"><span class="mn">2</span><span class="mn">10</span></span><span class="mo"> + </span><span class="msup significand-bit-20"><span class="mn">2</span><span class="mn">7</span></span><span class="mo"> + </span><span class="msup significand-bit-19"><span class="mn">2</span><span class="mn">6</span></span><span class="mo"> + </span><span class="msup significand-bit-17"><span class="mn">2</span><span class="mn">4</span></span><span class="mo"> + </span><span class="msup significand-bit-14"><span class="mn">2</span><span class="mn">1</span></span><span class="mo"> + </span><span class="mfrac significand-bit-12"><span class="mn">1</span><span class="msup"><span class="mn">2</span><span class="mn">1</span></span></span><span class="mo"> + </span><span class="mfrac significand-bit-9"><span class="mn">1</span><span class="msup"><span class="mn">2</span><span class="mn">4</span></span></span><span class="mo"> + </span><span class="mfrac significand-bit-5"><span class="mn">1</span><span class="msup"><span class="mn">2</span><span class="mn">8</span></span></span><span class="mo"> + </span><span class="mfrac significand-bit-3"><span class="mn">1</span><span class="msup"><span class="mn">2</span><span class="mn">10</span></span></span><span class="mo"> + </span><span class="mfrac significand-bit-1"><span class="mn">1</span><span class="msup"><span class="mn">2</span><span class="mn">12</span></span></span><span class="mo"> + </span><span class="mfrac significand-bit-0"><span class="mn">1</span><span class="msup"><span class="mn">2</span><span class="mn">13</span></span></span></span>
+                </span>
+
+
+                <span class="mrow indented">
+                    <span class="mi">n</span>
+                    <span class="mo">=</span>
+                    <span data-ieee754-value="significandPowersFractionsComputed"><span class="mn significand-bit-23">1024</span><span class="mo"> + </span><span class="mn significand-bit-20">128</span><span class="mo"> + </span><span class="mn significand-bit-19">64</span><span class="mo"> + </span><span class="mn significand-bit-17">16</span><span class="mo"> + </span><span class="mn significand-bit-14">2</span><span class="mo"> + </span><span class="mfrac significand-bit-12"><span class="mn">1</span><span class="mn">2</span></span><span class="mo"> + </span><span class="mfrac significand-bit-9"><span class="mn">1</span><span class="mn">16</span></span><span class="mo"> + </span><span class="mfrac significand-bit-5"><span class="mn">1</span><span class="mn">256</span></span><span class="mo"> + </span><span class="mfrac significand-bit-3"><span class="mn">1</span><span class="mn">1024</span></span><span class="mo"> + </span><span class="mfrac significand-bit-1"><span class="mn">1</span><span class="mn">4096</span></span><span class="mo"> + </span><span class="mfrac significand-bit-0"><span class="mn">1</span><span class="mn">8192</span></span></span>
+                </span>
+
+                <span class="mrow indented">
+                    <span class="mi">n</span>
+                    <span class="mo">=</span>
+                    <span data-ieee754-value="significandPowersComputed"><span class="mn significand-bit-23">1024</span><span class="mo"> + </span><span class="mn significand-bit-20">128</span><span class="mo"> + </span><span class="mn significand-bit-19">64</span><span class="mo"> + </span><span class="mn significand-bit-17">16</span><span class="mo"> + </span><span class="mn significand-bit-14">2</span><span class="mo"> + </span><span class="mn significand-bit-12">0.5</span><span class="mo"> + </span><span class="mn significand-bit-9">0.0625</span><span class="mo"> + </span><span class="mn significand-bit-5">0.00390625</span><span class="mo"> + </span><span class="mn significand-bit-3">0.0009765625</span><span class="mo"> + </span><span class="mn significand-bit-1">0.000244140625</span><span class="mo"> + </span><span class="mn significand-bit-0">0.0001220703125</span></span>
+                </span>
+
+                <span class="mrow indented">
+                    <span class="mi">n</span>
+                    <span class="mo">=</span>
+                    <span data-ieee754-value="absValue">1234.5678</span>
+                </span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="all.js"></script>
+
+
+
+</body></html>

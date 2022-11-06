@@ -1,0 +1,155 @@
+html {
+    cursor: default;
+}
+
+body {
+    margin: 0;
+    font-size: 2em;
+}
+
+.visualization-exponential {
+    font-size: 2.5em;
+    margin: 2em 0 0 2em;
+}
+
+.number-wrapper {
+    position: fixed;
+    padding: 0.5em 1em 0.7em;
+    border-bottom: 1px dashed #AAA;
+    background: rgba(255,255,255,0.9);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.number-input {
+    -webkit-appearance: none;
+    border: none;
+    font-size: 2em;
+    width: 100%;
+    text-align: center;
+    font-family: inherit;
+
+    box-sizing: border-box;
+    background: transparent;
+}
+
+.number-input:focus {
+    outline: none;
+}
+
+
+.toggle-details-button {
+    position: absolute;
+    width: 100%;
+    background: none;
+    border: none;
+    height: 22px;
+    font-size: 0.4em;
+    left: 0;
+    bottom: 0px;
+    line-height: 15px;
+    width: 100%;
+    cursor: pointer;
+    color: #777;
+}
+
+.toggle-details-button:hover, .toggle-details-button:focus {
+    color: #333;
+    background: rgba(245,245,245,0.7);
+}
+
+
+.bits-wrapper {
+    -webkit-transition: 300ms top;
+    transition: 300ms top;
+}
+
+
+.visualization-bits {
+    position: relative;
+    margin: 5em 1em;
+}
+
+.visualization-bits .bits-wrapper .math {
+    opacity: 0;
+    transition: 200ms opacity;
+}
+
+.visualization-bits.expanded .bits-wrapper .math {
+    opacity: 1;
+    transition: 300ms 100ms opacity;
+}
+
+.visualization-bits .significand-wrapper .hidden { visibility: hidden; }
+.visualization-bits.expanded .significand-wrapper .hidden { visibility: visible; }
+
+.visualization-bits .significand-wrapper { top: 0px; }
+.visualization-bits.expanded .significand-wrapper { top: 570px; }
+
+.visualization-bits .exponent-wrapper { top: 0px; }
+.visualization-bits.expanded .exponent-wrapper { top: 220px; }
+
+
+.visualization-bits .full-equation {
+    opacity: 1;
+    position: absolute;
+    top: 130px;
+    pointer-events: auto;
+    width: 960px;
+    transition: 300ms opacity, 300ms top;
+}
+
+.visualization-bits.expanded .full-equation {
+    opacity: 0;
+    pointer-events: none;
+    top: 1000px;
+}
+
+
+.significand-wrapper .bits::before,
+.significand-wrapper .bits::after {
+    content: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+    position: absolute;
+    font-size: 20px;
+    font-family: monospace;
+    line-height: 50px;
+    letter-spacing: 3px;
+    color: #BBB;
+
+    pointer-events: none;
+    opacity: 0;
+
+    transition: 300ms opacity;
+}
+
+.significand-wrapper .bits::before {
+    right: 359px;
+}
+
+.significand-wrapper .bits::after {
+    left: 347px;
+}
+
+.visualization-bits.expanded .significand-wrapper .bits::before,
+.visualization-bits.expanded .significand-wrapper .bits::after {
+    opacity: 1;
+}
+
+.full-equation.collapsed .mrow { visibility: hidden }
+.full-equation.collapsed .mrow:first-child { visibility: visible }
+
+.full-equation .significand-sum { padding: 0.6em 0.1em; }
+
+/* hover styles for part of equations related to hovered bits */
+
+[class*=significand-bit-] {
+    padding: 0 0.1em;
+}
+
+.hover {
+    border-radius: 0.1em;
+    background: rgba(255, 255, 0, 0.2);
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
