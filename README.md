@@ -1,6 +1,6 @@
 # IEEE 754 Single Precision Floating Point Visualization
 
-It's an interactive visualization of how single precision floating point representation works.
+Here is an interactive visualization of how single precision floating-point representation works.
 
 # Installation
 
