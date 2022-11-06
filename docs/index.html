@@ -13,7 +13,7 @@
 <body>
 
 <div class="number-wrapper math">
-    <input id="number-input" class="number-input" value="1234.5678" />
+    <input id="number-input" class="number-input" value="" />
 
     <button class="toggle-details-button">toggle details</button>
 </div>
@@ -168,7 +168,8 @@
 <script>
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const number = urlParams.get('q');
+  const value = urlParams.get('q');
+  const number = value !== null ? value : Math.random().toString().substr(0, 9);
   const element = document.getElementById('number-input');
   element.value = number;
   const event = new Event('change');
