@@ -165,6 +165,15 @@
 </div>
 
 <script src="./js/all.js"></script>
+<script>
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const number = urlParams.get('q');
+  const element = document.getElementById('number-input');
+  element.value = number;
+  const event = new Event('change');
+  element.dispatchEvent(event);
+</script>
 
 </body>
 </html>
