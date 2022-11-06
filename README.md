@@ -24,7 +24,4 @@ It is forked from the vizualization given at this talk at JSConf EU 2013 [Everyt
 
 See https://github.com/bartaz/ieee754-visualization
 
-License
-Copyright 2013 Bartek Szopka.
-
-Released under the MIT License.
+License, Copyright 2013 Bartek Szopka.Released under the MIT License.
